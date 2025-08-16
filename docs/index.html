@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flagable - Laravel Package Documentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#1E40AF'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-6">
+                <div class="flex items-center">
+                    <h1 class="text-3xl font-bold text-primary">Flagable</h1>
+                    <span class="ml-3 px-3 py-1 bg-blue-100 text-blue-800 text-sm font-medium rounded-full">v1.0</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="#installation" class="text-gray-600 hover:text-primary">Installation</a>
+                    <a href="#usage" class="text-gray-600 hover:text-primary">Usage</a>
+                    <a href="#api" class="text-gray-600 hover:text-primary">API</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-5xl font-bold mb-6">Laravel Flagging System</h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">A flexible and robust Laravel package that provides comprehensive flagging functionality for Eloquent models with polymorphic relationships and sophisticated multi-table architecture.</p>
+            <div class="flex justify-center space-x-4">
+                <a href="#installation" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">Get Started</a>
+                <a href="#features" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Key Features</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Everything you need for a complete flagging system in Laravel</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-sm border hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Flexible Flagging</h3>
+                    <p class="text-gray-600">Any model can flag any other model with polymorphic relationships</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-sm border hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Multiple Flag Types</h3>
+                    <p class="text-gray-600">Support for like, follow, favorite, bookmark, upvote, downvote, and custom types</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-sm border hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Sophisticated Architecture</h3>
+                    <p class="text-gray-600">Four-table design for optimal performance and flexibility</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Installation Section -->
+    <section id="installation" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Installation</h2>
+                <p class="text-xl text-gray-600">Get started with Flagable in just a few steps</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <!-- Requirements -->
+                <div class="bg-white rounded-xl shadow-sm border p-8 mb-8">
+                    <h3 class="text-2xl font-semibold mb-4">Requirements</h3>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="flex items-center">
+                            <div class="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                            <span>PHP 8.0 or higher</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                            <span>Laravel 9.0, 10.0, 11.0, or 12.0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 1 -->
+                <div class="bg-white rounded-xl shadow-sm border p-8 mb-8">
+                    <div class="flex items-center mb-4">
+                        <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-semibold mr-4">1</div>
+                        <h3 class="text-2xl font-semibold">Install via Composer</h3>
+                    </div>
+                    <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                        <code class="text-green-400 font-mono">composer require sowailem/flagable</code>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-white rounded-xl shadow-sm border p-8 mb-8">
+                    <div class="flex items-center mb-4">
+                        <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-semibold mr-4">2</div>
+                        <h3 class="text-2xl font-semibold">Run Migrations</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">The package will automatically register its service provider and facade through Laravel's auto-discovery feature.</p>
+                    <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                        <code class="text-green-400 font-mono">php artisan migrate</code>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-white rounded-xl shadow-sm border p-8">
+                    <div class="flex items-center mb-4">
+                        <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-semibold mr-4">3</div>
+                        <h3 class="text-2xl font-semibold">Seed Default Flag Types (Optional)</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">To populate the database with default flag types (like, follow, favorite, bookmark, upvote, downvote):</p>
+                    <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                        <code class="text-green-400 font-mono">php artisan db:seed --class="Sowailem\Flagable\Database\Seeders\FlagTypeSeeder"</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Usage Section -->
+    <section id="usage" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Usage Guide</h2>
+                <p class="text-xl text-gray-600">Learn how to implement flagging in your Laravel models</p>
+            </div>
+
+            <div class="max-w-6xl mx-auto">
+                <!-- Quick Start -->
+                <div class="bg-white rounded-xl shadow-sm border p-8 mb-8">
+                    <h3 class="text-2xl font-semibold mb-6">Quick Start</h3>
+                    
+                    <div class="grid lg:grid-cols-2 gap-8">
+                        <!-- Flaggable Model -->
+                        <div>
+                            <h4 class="text-lg font-semibold mb-4 text-blue-600">1. Make Models Flaggable</h4>
+                            <p class="text-gray-600 mb-4">Add the <code class="bg-gray-100 px-2 py-1 rounded">Flagable</code> trait to models that can be flagged:</p>
+                            <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                <pre class="text-sm"><code class="text-gray-300">&lt;?php
+
+<span class="text-blue-400">use</span> <span class="text-yellow-400">Sowailem\Flagable\Traits\Flagable</span>;
+
+<span class="text-blue-400">class</span> <span class="text-green-400">Post</span> <span class="text-blue-400">extends</span> <span class="text-green-400">Model</span>
+{
+    <span class="text-blue-400">use</span> <span class="text-yellow-400">Flagable</span>;
+    
+    <span class="text-gray-500">// Your model code...</span>
+}</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- Flagger Model -->
+                        <div>
+                            <h4 class="text-lg font-semibold mb-4 text-green-600">2. Enable Models to Flag</h4>
+                            <p class="text-gray-600 mb-4">Add the <code class="bg-gray-100 px-2 py-1 rounded">CanFlag</code> trait to models that can flag others:</p>
+                            <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                <pre class="text-sm"><code class="text-gray-300">&lt;?php
+
+<span class="text-blue-400">use</span> <span class="text-yellow-400">Sowailem\Flagable\Traits\CanFlag</span>;
+
+<span class="text-blue-400">class</span> <span class="text-green-400">User</span> <span class="text-blue-400">extends</span> <span class="text-green-400">Model</span>
+{
+    <span class="text-blue-400">use</span> <span class="text-yellow-400">CanFlag</span>;
+    
+    <span class="text-gray-500">// Your model code...</span>
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Basic Operations -->
+                <div class="bg-white rounded-xl shadow-sm border p-8 mb-8">
+                    <h3 class="text-2xl font-semibold mb-6">Basic Operations</h3>
+                    
+                    <div class="space-y-6">
+                        <!-- Flag a Model -->
+                        <div>
+                            <h4 class="text-lg font-semibold mb-3">Flag a Model</h4>
+                            <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                <pre class="text-sm"><code class="text-gray-300"><span class="text-gray-500">// User flags a post as "like"</span>
+<span class="text-blue-400">$user</span> = <span class="text-green-400">User</span>::<span class="text-yellow-400">find</span>(<span class="text-orange-400">1</span>);
+<span class="text-blue-400">$post</span> = <span class="text-green-400">Post</span>::<span class="text-yellow-400">find</span>(<span class="text-orange-400">1</span>);
+
+<span class="text-blue-400">$user</span>-><span class="text-yellow-400">flag</span>(<span class="text-blue-400">$post</span>, <span class="text-orange-400">'like'</span>);</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- Unflag a Model -->
+                        <div>
+                            <h4 class="text-lg font-semibold mb-3">Unflag a Model</h4>
+                            <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                <pre class="text-sm"><code class="text-gray-300"><span class="text-gray-500">// User removes like from post</span>
+<span class="text-blue-400">$user</span>-><span class="text-yellow-400">unflag</span>(<span class="text-blue-400">$post</span>, <span class="text-orange-400">'like'</span>);</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- Check if Flagged -->
+                        <div>
+                            <h4 class="text-lg font-semibold mb-3">Check if Flagged</h4>
+                            <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                <pre class="text-sm"><code class="text-gray-300"><span class="text-gray-500">// Check if user has liked the post</span>
+<span class="text-blue-400">if</span> (<span class="text-blue-400">$user</span>-><span class="text-yellow-400">hasFlagged</span>(<span class="text-blue-400">$post</span>, <span class="text-orange-400">'like'</span>)) {
+    <span class="text-green-400">echo</span> <span class="text-orange-400">"User has liked this post"</span>;
+}</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- Get Flag Count -->
+                        <div>
+                            <h4 class="text-lg font-semibold mb-3">Get Flag Count</h4>
+                            <div class="text-gray-600 mb-3">Get the total number of flags for a model:</div>
+                            <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                <pre class="text-sm"><code class="text-gray-300"><span class="text-gray-500">// Get total likes for a post</span>
+<span class="text-blue-400">$likeCount</span> = <span class="text-blue-400">$post</span>-><span class="text-yellow-400">flagCount</span>(<span class="text-orange-400">'like'</span>);
+
+<span class="text-gray-500">// Get all flags count (all types)</span>
+<span class="text-blue-400">$totalFlags</span> = <span class="text-blue-400">$post</span>-><span class="text-yellow-400">flagCount</span>();</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- API Reference Section -->
+    <section id="api" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">API Reference</h2>
+                <p class="text-xl text-gray-600">Complete reference for all available methods and traits</p>
+            </div>
+
+            <div class="max-w-6xl mx-auto space-y-8">
+                <!-- CanFlag Trait -->
+                <div class="bg-white rounded-xl shadow-sm border p-8">
+                    <h3 class="text-2xl font-semibold mb-6 text-blue-600">CanFlag Trait</h3>
+                    <p class="text-gray-600 mb-6">Add this trait to models that can flag other models.</p>
+                    
+                    <div class="space-y-6">
+                        <!-- flag() method -->
+                        <div class="border-l-4 border-blue-500 pl-6">
+                            <h4 class="text-lg font-semibold mb-2">flag(Model $flagable, string $flagTypeName)</h4>
+                            <p class="text-gray-600 mb-3">Flags a model with the specified flag type.</p>
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <div class="text-sm text-gray-700">
+                                    <strong>Parameters:</strong><br>
+                                    • <code>$flagable</code> - The model to be flagged<br>
+                                    • <code>$flagTypeName</code> - The type of flag (e.g., 'like', 'follow')
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- unflag() method -->
+                        <div class="border-l-4 border-red-500 pl-6">
+                            <h4 class="text-lg font-semibold mb-2">unflag(Model $flagable, string $flagTypeName)</h4>
+                            <p class="text-gray-600 mb-3">Removes a flag from a model.</p>
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <div class="text-sm text-gray-700">
+                                    <strong>Parameters:</strong><br>
+                                    • <code>$flagable</code> - The model to unflag<br>
+                                    • <code>$flagTypeName</code> - The type of flag to remove
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- hasFlagged() method -->
+                        <div class="border-l-4 border-green-500 pl-6">
+                            <h4 class="text-lg font-semibold mb-2">hasFlagged(Model $flagable, ?string $flagTypeName = null): bool</h4>
+                            <p class="text-gray-600 mb-3">Checks if the model has flagged another model.</p>
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <div class="text-sm text-gray-700">
+                                    <strong>Parameters:</strong><br>
+                                    • <code>$flagable</code> - The model to check<br>
+                                    • <code>$flagTypeName</code> - Optional flag type to check (null checks all types)
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- flags() relationship -->
+                        <div class="border-l-4 border-purple-500 pl-6">
+                            <h4 class="text-lg font-semibold mb-2">flags()</h4>
+                            <p class="text-gray-600 mb-3">Returns a morphMany relationship to all flags created by this model.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flagable Trait -->
+                <div class="bg-white rounded-xl shadow-sm border p-8">
+                    <h3 class="text-2xl font-semibold mb-6 text-green-600">Flagable Trait</h3>
+                    <p class="text-gray-600 mb-6">Add this trait to models that can be flagged by other models.</p>
+                    
+                    <div class="space-y-6">
+                        <!-- isFlaggedBy() method -->
+                        <div class="border-l-4 border-blue-500 pl-6">
+                            <h4 class="text-lg font-semibold mb-2">isFlaggedBy(Model $flagger, ?string $flagTypeName = null): bool</h4>
+                            <p class="text-gray-600 mb-3">Checks if this model is flagged by another model.</p>
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <div class="text-sm text-gray-700">
+                                    <strong>Parameters:</strong><br>
+                                    • <code>$flagger</code> - The model that might have flagged this one<br>
+                                    • <code>$flagTypeName</code> - Optional flag type to check
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- flagCount() method -->
+                        <div class="border-l-4 border-orange-500 pl-6">
+                            <h4 class="text-lg font-semibold mb-2">flagCount(?string $flagTypeName = null): int</h4>
+                            <p class="text-gray-600 mb-3">Returns the total number of flags for this model.</p>
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <div class="text-sm text-gray-700">
+                                    <strong>Parameters:</strong><br>
+                                    • <code>$flagTypeName</code> - Optional flag type to count (null counts all types)
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- flaggers() method -->
+                        <div class="border-l-4 border-indigo-500 pl-6">
+                            <h4 class="text-lg font-semibold mb-2">flaggers(string $flagTypeName, string $flaggerModel)</h4>
+                            <p class="text-gray-600 mb-3">Returns all models that have flagged this model with a specific flag type.</p>
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <div class="text-sm text-gray-700">
+                                    <strong>Parameters:</strong><br>
+                                    • <code>$flagTypeName</code> - The flag type to search for<br>
+                                    • <code>$flaggerModel</code> - The class name of the flagger model
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- flags() relationship -->
+                        <div class="border-l-4 border-purple-500 pl-6">
+                            <h4 class="text-lg font-semibold mb-2">flags()</h4>
+                            <p class="text-gray-600 mb-3">Returns a hasManyThrough relationship to all flags for this model.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Default Flag Types -->
+                <div class="bg-white rounded-xl shadow-sm border p-8">
+                    <h3 class="text-2xl font-semibold mb-6 text-purple-600">Default Flag Types</h3>
+                    <p class="text-gray-600 mb-6">The package comes with these pre-defined flag types:</p>
+                    
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="flex items-center p-3 bg-blue-50 rounded-lg">
+                            <div class="w-3 h-3 bg-blue-500 rounded-full mr-3"></div>
+                            <span class="font-medium">like</span>
+                        </div>
+                        <div class="flex items-center p-3 bg-green-50 rounded-lg">
+                            <div class="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                            <span class="font-medium">follow</span>
+                        </div>
+                        <div class="flex items-center p-3 bg-red-50 rounded-lg">
+                            <div class="w-3 h-3 bg-red-500 rounded-full mr-3"></div>
+                            <span class="font-medium">favorite</span>
+                        </div>
+                        <div class="flex items-center p-3 bg-yellow-50 rounded-lg">
+                            <div class="w-3 h-3 bg-yellow-500 rounded-full mr-3"></div>
+                            <span class="font-medium">bookmark</span>
+                        </div>
+                        <div class="flex items-center p-3 bg-indigo-50 rounded-lg">
+                            <div class="w-3 h-3 bg-indigo-500 rounded-full mr-3"></div>
+                            <span class="font-medium">upvote</span>
+                        </div>
+                        <div class="flex items-center p-3 bg-gray-50 rounded-lg">
+                            <div class="w-3 h-3 bg-gray-500 rounded-full mr-3"></div>
+                            <span class="font-medium">downvote</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Database Architecture Section -->
+    <section id="architecture" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Database Architecture</h2>
+                <p class="text-xl text-gray-600">Understanding the sophisticated four-table design</p>
+            </div>
+
+            <div class="max-w-6xl mx-auto space-y-8">
+                <!-- Architecture Overview -->
+                <div class="bg-white rounded-xl shadow-sm border p-8">
+                    <h3 class="text-2xl font-semibold mb-6">Architecture Overview</h3>
+                    <p class="text-gray-600 mb-6">The Flagable package uses a sophisticated four-table architecture that provides optimal performance, flexibility, and data integrity. This design allows for efficient querying while maintaining clean relationships between different entities.</p>
+                    
+                    <div class="grid lg:grid-cols-2 gap-8">
+                        <div class="space-y-4">
+                            <h4 class="text-lg font-semibold text-blue-600">Benefits of This Design</h4>
+                            <ul class="space-y-2 text-gray-600">
+                                <li class="flex items-start">
+                                    <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                    <span>Eliminates data duplication</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                    <span>Optimizes database storage</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                    <span>Enables efficient indexing</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                    <span>Supports unlimited flag types</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                    <span>Maintains referential integrity</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-6">
+                            <h4 class="text-lg font-semibold mb-4">Table Relationships</h4>
+                            <div class="text-sm text-gray-700 space-y-2">
+                                <div><strong>flag_types</strong> → <strong>flag_links</strong></div>
+                                <div><strong>flag_targets</strong> → <strong>flag_links</strong></div>
+                                <div><strong>flag_links</strong> → <strong>flags</strong></div>
+                                <div><strong>flags</strong> → <em>polymorphic flaggers</em></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Table Details -->
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <!-- flag_types table -->
+                    <div class="bg-white rounded-xl shadow-sm border p-8">
+                        <h3 class="text-xl font-semibold mb-4 text-blue-600">flag_types</h3>
+                        <p class="text-gray-600 mb-4">Stores all available flag types (like, follow, favorite, etc.)</p>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between">
+                                    <span class="font-medium">id</span>
+                                    <span class="text-gray-600">Primary Key</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="font-medium">name</span>
+                                    <span class="text-gray-600">Unique String</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- flag_targets table -->
+                    <div class="bg-white rounded-xl shadow-sm border p-8">
+                        <h3 class="text-xl font-semibold mb-4 text-green-600">flag_targets</h3>
+                        <p class="text-gray-600 mb-4">Stores model class names that can be flagged</p>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between">
+                                    <span class="font-medium">id</span>
+                                    <span class="text-gray-600">Primary Key</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="font-medium">name</span>
+                                    <span class="text-gray-600">Model Class Name</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- flag_links table -->
+                    <div class="bg-white rounded-xl shadow-sm border p-8">
+                        <h3 class="text-xl font-semibold mb-4 text-purple-600">flag_links</h3>
+                        <p class="text-gray-600 mb-4">Links flag types with target models (junction table)</p>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between">
+                                    <span class="font-medium">id</span>
+                                    <span class="text-gray-600">Primary Key</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="font-medium">flag_type_id</span>
+                                    <span class="text-gray-600">Foreign Key</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="font-medium">flag_target_id</span>
+                                    <span class="text-gray-600">Foreign Key</span>
+                                </div>
+                            </div>
+                            <div class="mt-3 pt-3 border-t text-xs text-gray-500">
+                                Unique: (flag_type_id, flag_target_id)
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- flags table -->
+                    <div class="bg-white rounded-xl shadow-sm border p-8">
+                        <h3 class="text-xl font-semibold mb-4 text-orange-600">flags</h3>
+                        <p class="text-gray-600 mb-4">Stores individual flag records with polymorphic relationships</p>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between">
+                                    <span class="font-medium">id</span>
+                                    <span class="text-gray-600">Primary Key</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="font-medium">flag_link_id</span>
+                                    <span class="text-gray-600">Foreign Key</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="font-medium">flagger_type</span>
+                                    <span class="text-gray-600">Polymorphic Type</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="font-medium">flagger_id</span>
+                                    <span class="text-gray-600">Polymorphic ID</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="font-medium">timestamps</span>
+                                    <span class="text-gray-600">Created/Updated</span>
+                                </div>
+                            </div>
+                            <div class="mt-3 pt-3 border-t text-xs text-gray-500">
+                                Unique: (flag_link_id, flagger_type, flagger_id)<br>
+                                Index: (flagger_type, flagger_id)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Example Flow -->
+                <div class="bg-white rounded-xl shadow-sm border p-8">
+                    <h3 class="text-2xl font-semibold mb-6">How It Works: Example Flow</h3>
+                    <p class="text-gray-600 mb-6">Here's how the system works when a User likes a Post:</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-semibold mr-4 flex-shrink-0">1</div>
+                            <div>
+                                <h4 class="font-semibold">Check/Create Flag Type</h4>
+                                <p class="text-gray-600">System ensures "like" exists in <code class="bg-gray-100 px-2 py-1 rounded">flag_types</code> table</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-semibold mr-4 flex-shrink-0">2</div>
+                            <div>
+                                <h4 class="font-semibold">Check/Create Flag Target</h4>
+                                <p class="text-gray-600">System ensures "App\Models\Post" exists in <code class="bg-gray-100 px-2 py-1 rounded">flag_targets</code> table</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-semibold mr-4 flex-shrink-0">3</div>
+                            <div>
+                                <h4 class="font-semibold">Check/Create Flag Link</h4>
+                                <p class="text-gray-600">System creates link between "like" type and "Post" target in <code class="bg-gray-100 px-2 py-1 rounded">flag_links</code> table</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-semibold mr-4 flex-shrink-0">4</div>
+                            <div>
+                                <h4 class="font-semibold">Create Flag Record</h4>
+                                <p class="text-gray-600">System creates the actual flag record in <code class="bg-gray-100 px-2 py-1 rounded">flags</code> table with User's polymorphic relationship</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Flagable</h3>
+                    <p class="text-gray-400">A flexible and robust Laravel package for comprehensive flagging functionality.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#installation" class="hover:text-white transition">Installation</a></li>
+                        <li><a href="#usage" class="hover:text-white transition">Usage Guide</a></li>
+                        <li><a href="#api" class="hover:text-white transition">API Reference</a></li>
+                        <li><a href="#architecture" class="hover:text-white transition">Architecture</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Author</h4>
+                    <p class="text-gray-400">Abdullah Sowailem</p>
+                    <p class="text-gray-400">abdullah.sowailem@gmail.com</p>
+                    <div class="mt-4">
+                        <span class="inline-block bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-sm">MIT License</span>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Flagable Package. Documentation generated on August 17, 2025.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
