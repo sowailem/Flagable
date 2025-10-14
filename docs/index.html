@@ -253,6 +253,22 @@
 <span class="text-blue-400">$totalFlags</span> = <span class="text-blue-400">$post</span>-><span class="text-yellow-400">flagCount</span>();</code></pre>
                             </div>
                         </div>
+
+                        <!-- Get Flagged Entities (NEW FEATURE) -->
+                        <div>
+                            <h4 class="text-lg font-semibold mb-3">Get Flagged Entities <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full font-medium ml-2">NEW</span></h4>
+                            <div class="text-gray-600 mb-3">Get all entities flagged by a user (the "other way around" of getFlaggers):</div>
+                            <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                <pre class="text-sm"><code class="text-gray-300"><span class="text-gray-500">// Get all posts liked by user (using trait method)</span>
+<span class="text-blue-400">$likedPosts</span> = <span class="text-blue-400">$user</span>-><span class="text-yellow-400">flags</span>(<span class="text-orange-400">'like'</span>);
+
+<span class="text-gray-500">// Get all bookmarked posts (using facade)</span>
+<span class="text-blue-400">$bookmarks</span> = <span class="text-green-400">Flag</span>::<span class="text-yellow-400">getFlags</span>(<span class="text-blue-400">$user</span>, <span class="text-orange-400">'bookmark'</span>);
+
+<span class="text-gray-500">// Get all entities flagged by user (any type)</span>
+<span class="text-blue-400">$allFlags</span> = <span class="text-blue-400">$user</span>-><span class="text-yellow-400">flags</span>();</code></pre>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -313,10 +329,29 @@
                             </div>
                         </div>
 
-                        <!-- flags() relationship -->
+                        <!-- flags() method -->
                         <div class="border-l-4 border-purple-500 pl-6">
-                            <h4 class="text-lg font-semibold mb-2">flags()</h4>
-                            <p class="text-gray-600 mb-3">Returns a morphMany relationship to all flags created by this model.</p>
+                            <h4 class="text-lg font-semibold mb-2">flags(?string $flagTypeName = null)</h4>
+                            <p class="text-gray-600 mb-3">Returns a collection of all entities flagged by this model.</p>
+                            <div class="bg-gray-50 rounded-lg p-4 mb-3">
+                                <div class="text-sm text-gray-700">
+                                    <strong>Parameters:</strong><br>
+                                    • <code>$flagTypeName</code> - Optional flag type to filter by (null returns all flagged entities)
+                                </div>
+                            </div>
+                            <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto mb-3">
+                                <pre class="text-sm"><code class="text-gray-300"><span class="text-gray-500">// Get all posts liked by user</span>
+<span class="text-blue-400">$likedPosts</span> = <span class="text-blue-400">$user</span>-><span class="text-yellow-400">flags</span>(<span class="text-orange-400">'like'</span>);
+
+<span class="text-gray-500">// Get all entities flagged by user (any type)</span>
+<span class="text-blue-400">$allFlags</span> = <span class="text-blue-400">$user</span>-><span class="text-yellow-400">flags</span>();</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- flagsRelation() method -->
+                        <div class="border-l-4 border-gray-500 pl-6">
+                            <h4 class="text-lg font-semibold mb-2">flagsRelation()</h4>
+                            <p class="text-gray-600 mb-3">Returns a morphMany relationship to all flags created by this model (for advanced queries).</p>
                         </div>
                     </div>
                 </div>
@@ -369,6 +404,52 @@
                         <div class="border-l-4 border-purple-500 pl-6">
                             <h4 class="text-lg font-semibold mb-2">flags()</h4>
                             <p class="text-gray-600 mb-3">Returns a hasManyThrough relationship to all flags for this model.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flag Facade -->
+                <div class="bg-white rounded-xl shadow-sm border p-8">
+                    <h3 class="text-2xl font-semibold mb-6 text-orange-600">Flag Facade</h3>
+                    <p class="text-gray-600 mb-6">Static methods available through the Flag facade for direct access to flagging functionality.</p>
+                    
+                    <div class="space-y-6">
+                        <!-- getFlags() method -->
+                        <div class="border-l-4 border-orange-500 pl-6">
+                            <h4 class="text-lg font-semibold mb-2">Flag::getFlags(Model $flagger, ?string $flagTypeName = null)</h4>
+                            <p class="text-gray-600 mb-3">Returns a collection of all entities flagged by the specified model.</p>
+                            <div class="bg-gray-50 rounded-lg p-4 mb-3">
+                                <div class="text-sm text-gray-700">
+                                    <strong>Parameters:</strong><br>
+                                    • <code>$flagger</code> - The model that created the flags<br>
+                                    • <code>$flagTypeName</code> - Optional flag type to filter by (null returns all flagged entities)
+                                </div>
+                            </div>
+                            <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto mb-3">
+                                <pre class="text-sm"><code class="text-gray-300"><span class="text-blue-400">use</span> <span class="text-yellow-400">Sowailem\Flagable\Facades\Flag</span>;
+
+<span class="text-gray-500">// Get all posts bookmarked by user</span>
+<span class="text-blue-400">$bookmarks</span> = <span class="text-green-400">Flag</span>::<span class="text-yellow-400">getFlags</span>(<span class="text-blue-400">$user</span>, <span class="text-orange-400">'bookmark'</span>);
+
+<span class="text-gray-500">// Get all entities flagged by user (any type)</span>
+<span class="text-blue-400">$allFlags</span> = <span class="text-green-400">Flag</span>::<span class="text-yellow-400">getFlags</span>(<span class="text-blue-400">$user</span>);</code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- Other facade methods note -->
+                        <div class="bg-blue-50 rounded-lg p-4">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <svg class="w-5 h-5 text-blue-600 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm text-blue-800">
+                                        <strong>Note:</strong> The Flag facade also provides static access to all other flagging methods like <code>flag()</code>, <code>unflag()</code>, <code>isFlaggedBy()</code>, <code>getFlagCount()</code>, and <code>getFlaggers()</code>.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
