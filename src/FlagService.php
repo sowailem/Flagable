@@ -37,6 +37,8 @@ class FlagService
             'flag_link_id' => $flagLink->id,
             'flagger_type' => get_class($flagger),
             'flagger_id' => $flagger->getKey(),
+            'flaggable_type' => get_class($flagable),
+            'flaggable_id' => $flagable->getKey(),
         ]);
     }
 
@@ -65,15 +67,16 @@ class FlagService
         return Flag::where('flag_link_id', $flagLink->id)
                 ->where('flagger_type', get_class($flagger))
                 ->where('flagger_id', $flagger->getKey())
+                ->where('flaggable_type', get_class($flagable))
+                ->where('flaggable_id', $flagable->getKey())
                 ->delete() > 0;
     }
 
     public function isFlaggedBy(Model $flagable, Model $flagger, ?string $flagTypeName = null): bool
     {
         $query = Flag::query()
-            ->whereHas('link.target', function ($query) use ($flagable) {
-                $query->where('name', get_class($flagable));
-            })
+            ->where('flaggable_type', get_class($flagable))
+            ->where('flaggable_id', $flagable->getKey())
             ->where('flagger_type', get_class($flagger))
             ->where('flagger_id', $flagger->getKey());
 
@@ -102,9 +105,8 @@ class FlagService
     public function getFlagCount(Model $flagable, ?string $flagTypeName = null): int
     {
         $query = Flag::query()
-            ->whereHas('link.target', function ($query) use ($flagable) {
-                $query->where('name', get_class($flagable));
-            });
+            ->where('flaggable_type', get_class($flagable))
+            ->where('flaggable_id', $flagable->getKey());
 
         if ($flagTypeName) {
             $query->whereHas('link.type', function ($query) use ($flagTypeName) {
@@ -113,5 +115,21 @@ class FlagService
         }
 
         return $query->count();
+    }
+
+    public function getFlags(Model $flagger, ?string $flagTypeName = null): \Illuminate\Database\Eloquent\Collection
+    {
+        $query = Flag::query()
+            ->where('flagger_type', get_class($flagger))
+            ->where('flagger_id', $flagger->getKey())
+            ->with('flaggable');
+
+        if ($flagTypeName) {
+            $query->whereHas('link.type', function ($query) use ($flagTypeName) {
+                $query->where('name', $flagTypeName);
+            });
+        }
+
+        return $query->get()->pluck('flaggable');
     }
 }

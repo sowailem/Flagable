@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Flag extends Model
 {
-    protected $fillable = ['flag_link_id', 'flagger_type', 'flagger_id'];
+    protected $fillable = ['flag_link_id', 'flagger_type', 'flagger_id', 'flaggable_type', 'flaggable_id'];
 
     public $timestamps = true;
 
@@ -18,6 +18,11 @@ class Flag extends Model
     }
 
     public function flagger(): MorphTo
+    {
+        return $this->morphTo();
+    }
+
+    public function flaggable(): MorphTo
     {
         return $this->morphTo();
     }

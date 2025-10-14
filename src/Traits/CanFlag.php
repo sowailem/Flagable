@@ -22,7 +22,16 @@ trait CanFlag
         return Flag::isFlaggedBy($flagable, $this, $flagTypeName);
     }
 
-    public function flags()
+    public function flags(?string $flagTypeName = null)
+    {
+        if ($flagTypeName) {
+            return Flag::getFlags($this, $flagTypeName);
+        }
+        
+        return Flag::getFlags($this);
+    }
+
+    public function flagsRelation()
     {
         return $this->morphMany(\Sowailem\Flagable\Models\Flag::class, 'flagger');
     }
